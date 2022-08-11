@@ -20,7 +20,7 @@ class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
-		assertEquals("Hello World", demoController.greeting());
+		assertEquals("Hello World", demoController.greeting().getMessage());
 	}
 
 }
