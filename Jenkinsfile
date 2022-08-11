@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build And Unit Test') {
             steps {
-                sh ".\gradlew build"
+                sh "gradle build"
             }
         }
 
