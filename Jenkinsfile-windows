@@ -16,12 +16,13 @@ pipeline {
         stage('Analyze SonarQube') {
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    bat "gradle sonarqube \
-                  -Dsonar.projectKey=employee-example-devops \
-                  -Dsonar.host.url=${env.SONAR_HOST_URL} \
-                  -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
-                  -Dsonar.projectName=employee-example-devops \
-                  -Dsonar.projectVersion=${BUILD_NUMBER}"
+                //     bat "gradle sonarqube \
+                //   -Dsonar.projectKey=employee-example-devops \
+                //   -Dsonar.host.url=${env.SONAR_HOST_URL} \
+                //   -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
+                //   -Dsonar.projectName=employee-example-devops \
+                //   -Dsonar.projectVersion=${BUILD_NUMBER}"
+                    bat 'gradle sonarqube'
                 }
             }
         }
