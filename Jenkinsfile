@@ -23,10 +23,10 @@ pipeline {
 
     }
     
-    post {
-        success {
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit 'build/reports/**/*.xml'
-        }
-    }
+    // post {
+    //     success {
+    //         archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+    //         junit 'build/reports/**/*.xml'
+    //     }
+    // }
 }
