@@ -3,7 +3,7 @@ pipeline {
     agent any
     
     tools {
-        maven "GRADLE_HOME"
+        gradle "GRADLE_HOME"
     }
 
     stages {
