@@ -22,7 +22,7 @@ pipeline {
                 //   -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
                 //   -Dsonar.projectName=employee-example-devops \
                 //   -Dsonar.projectVersion=${BUILD_NUMBER}"
-                    bat 'gradle clean sonarqube'
+                    bat 'gradle clean test sonarqube'
                 }
             }
         }
