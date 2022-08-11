@@ -16,7 +16,12 @@ pipeline {
         stage('Analyze SonarQube') {
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    bat 'gradle sonarqube'
+                    bat "./gradlew sonarqube \
+                  -Dsonar.projectKey=${serviceName} \
+                  -Dsonar.host.url=${env.SONAR_HOST_URL} \
+                  -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
+                  -Dsonar.projectName=${serviceName} \
+                  -Dsonar.projectVersion=${BUILD_NUMBER}"
                 }
             }
         }

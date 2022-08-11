@@ -9,15 +9,15 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-sonarqube {
-	properties{
-		property "sonar.sourceEncoding", "UTF-8"
-		property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
-		property "sonar.sources", "src"
-		property 'sonar.coverage.exclusions',
-		"**/com/example/demo/DemoApplication.*"
-	}
-}
+// sonarqube {
+// 	properties{
+// 		property "sonar.sourceEncoding", "UTF-8"
+// 		property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
+// 		property "sonar.sources", "src/main/java"
+// 		property "sonar.tests", "."
+// 		property 'sonar.coverage.exclusions', "**/com/example/demo/DemoApplication.*"
+// 	}
+// }
 
 configurations {
 	compileOnly {
