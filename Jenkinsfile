@@ -25,8 +25,8 @@ pipeline {
     
     post {
         success {
-            junit allowEmptyResults: true, testResults: '**/test-results/**/*.xml'
-            //archiveArtifacts 'target/*.jar'
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/reports/**/*.xml'
         }
     }
 }
