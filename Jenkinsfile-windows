@@ -15,7 +15,7 @@ pipeline {
 
         stage('Analyze SonarQube') {
             steps {
-                withSonarQubeEnv() {
+                withSonarQubeEnv('sonarqube') {
                 //     bat "gradle sonarqube \
                 //   -Dsonar.projectKey=employee-example-devops \
                 //   -Dsonar.host.url=${env.SONAR_HOST_URL} \
