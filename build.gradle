@@ -29,3 +29,10 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+sonarqube {
+	properties{
+		property 'sonar.coverage.exclusions',
+		"**/com/example/demo/DemoApplication.*"
+	}
+}
