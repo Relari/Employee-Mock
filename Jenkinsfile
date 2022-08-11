@@ -25,7 +25,7 @@ pipeline {
     
     post {
         success {
-            junit '**/test-reports/*.xml'
+            junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
             //archiveArtifacts 'target/*.jar'
         }
     }
