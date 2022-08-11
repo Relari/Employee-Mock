@@ -13,13 +13,13 @@ pipeline {
             }
         }
 
-        // stage('Analyze SonarQube') {
-        //     steps {
-        //         withSonarQubeEnv('sonarqube') {
-        //             bat 'mvn clean verify sonar:sonar'
-        //         }
-        //     }
-        // }
+        stage('Analyze SonarQube') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    bat 'gradle sonar'
+                }
+            }
+        }
 
     }
     
