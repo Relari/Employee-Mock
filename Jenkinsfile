@@ -9,17 +9,17 @@ pipeline {
     stages {
         stage('Build And Unit Test') {
             steps {
-                sh "mvn clean install"
+                sh ".\gradlew build"
             }
         }
 
-        stage('Analyze SonarQube') {
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    bat 'mvn clean verify sonar:sonar'
-                }
-            }
-        }
+        // stage('Analyze SonarQube') {
+        //     steps {
+        //         withSonarQubeEnv('sonarqube') {
+        //             bat 'mvn clean verify sonar:sonar'
+        //         }
+        //     }
+        // }
 
     }
     
