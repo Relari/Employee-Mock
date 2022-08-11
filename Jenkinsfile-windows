@@ -22,16 +22,16 @@ pipeline {
                 //   -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
                 //   -Dsonar.projectName=employee-example-devops \
                 //   -Dsonar.projectVersion=${BUILD_NUMBER}"
-                    bat 'gradle sonarqube'
+                    bat 'gradle clean sonarqube'
                 }
             }
         }
 
-        stage("Quality gate") {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
+        // stage("Quality gate") {
+        //     steps {
+        //         waitForQualityGate abortPipeline: true
+        //     }
+        // }
 
     }
     
