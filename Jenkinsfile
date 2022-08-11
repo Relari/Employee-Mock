@@ -26,7 +26,7 @@ pipeline {
     post {
         success {
             junit '**/test-reports/*.xml'
-            archiveArtifacts 'target/*.jar'
+            //archiveArtifacts 'target/*.jar'
         }
     }
 }
