@@ -40,8 +40,8 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
-}
+// jacocoTestReport {
+//     reports {
+//         xml.enabled true
+//     }
+// }
