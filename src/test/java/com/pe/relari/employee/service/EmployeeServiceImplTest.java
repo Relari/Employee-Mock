@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.pe.relari.employee.dao.EmployeeDao;
+import com.pe.relari.employee.model.domain.Employee;
 import com.pe.relari.employee.util.TestUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Collections;
+import java.util.List;
 
 class EmployeeServiceImplTest {
 
@@ -31,12 +33,12 @@ class EmployeeServiceImplTest {
     @Test
     void findAll() {
 
-        var employee = buildEmployee();
+        Employee employee = buildEmployee();
 
         Mockito.when(employeeDao.findAll())
                 .thenReturn(Collections.singletonList(employee));
 
-        var employees = employeeService.findAll();
+        List<Employee> employees = employeeService.findAll();
 
         assertEquals(employee.getIdEmployee(), employees.get(0).getIdEmployee());
         assertEquals(employee.getFirstName(), employees.get(0).getFirstName());
@@ -50,7 +52,7 @@ class EmployeeServiceImplTest {
     @Test
     void deleteAll() {
 
-        var employee = buildEmployee();
+        Employee employee = buildEmployee();
 
         employeeDao.deleteAll();
 
@@ -75,12 +77,12 @@ class EmployeeServiceImplTest {
     @Test
     void findById() {
 
-        var employee = buildEmployee();
+        Employee employee = buildEmployee();
 
         Mockito.when(employeeDao.findById(Mockito.anyInt()))
                 .thenReturn(employee);
 
-        var employeeDomain = employeeService.findById(1);
+        Employee employeeDomain = employeeService.findById(1);
         assertEquals(employee.getIdEmployee(), employeeDomain.getIdEmployee());
         assertEquals(employee.getFirstName(), employeeDomain.getFirstName());
 //        assertEquals(employee.getLastName(), employees.get(0).getLastName());
@@ -95,7 +97,7 @@ class EmployeeServiceImplTest {
     void save() {
         employeeDao.save(Mockito.any());
 
-        var employee = TestUtil.buildEmployee();
+        Employee employee = TestUtil.buildEmployee();
         employeeService.save(employee);
 
         assertNotNull(employee);

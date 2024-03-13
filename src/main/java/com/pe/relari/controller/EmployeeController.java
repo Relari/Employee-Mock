@@ -3,6 +3,7 @@ package com.pe.relari.controller;
 import com.pe.relari.controller.mapper.EmployeeMapper;
 import com.pe.relari.employee.model.api.AddressResponse;
 import com.pe.relari.employee.model.api.EmployeeDetailResponse;
+import com.pe.relari.employee.model.domain.Employee;
 import com.pe.relari.employee.service.EmployeeService;
 import com.pe.relari.employee.model.api.EmployeeRequest;
 import com.pe.relari.employee.model.api.EmployeeResponse;
@@ -178,8 +179,8 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void save(@RequestBody @Valid EmployeeRequest employeeRequest) {
-        var employeeEntity = EmployeeMapper.mapEmployee(employeeRequest);
-        employeeService.save(employeeEntity);
+        Employee employee = EmployeeMapper.mapEmployee(employeeRequest);
+        employeeService.save(employee);
     }
 
     @Operation(

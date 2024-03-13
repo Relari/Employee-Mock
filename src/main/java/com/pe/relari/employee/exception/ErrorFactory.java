@@ -34,7 +34,7 @@ public class ErrorFactory {
 
     HttpStatus httpStatus = getHttpStatus(properties.getCategory());
 
-    var errorDetail = ErrorResponse.ErrorDetail.builder()
+    ErrorResponse.ErrorDetail errorDetail = ErrorResponse.ErrorDetail.builder()
             .appName(applicationName)
             .errorCode(apiException.getClass().getSimpleName())
             .status(httpStatus.value())
@@ -54,10 +54,10 @@ public class ErrorFactory {
       String json = apiException.getMessage()
               .substring(apiException.getMessage().indexOf("["));
 
-      var responses = ConverterUtil.readData(json, ErrorResponse[].class);
+      ErrorResponse[] responses = ConverterUtil.readData(json, ErrorResponse[].class);
 
       assert responses != null;
-      var errorDetails = responses[0].getErrorDetails();
+      List<ErrorResponse.ErrorDetail> errorDetails = responses[0].getErrorDetails();
 
       errorDetails.add(errorDetail);
       errorResponse.setErrorDetails(errorDetails);

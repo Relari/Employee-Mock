@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import com.pe.relari.employee.dao.impl.EmployeeDaoImpl;
 import com.pe.relari.employee.dao.repository.EmployeeRepository;
 import com.pe.relari.employee.exception.ApiException;
+import com.pe.relari.employee.model.domain.Employee;
+import com.pe.relari.employee.model.entity.EmployeeEntity;
 import com.pe.relari.employee.util.TestUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 class EmployeeDaoTest {
@@ -35,12 +38,12 @@ class EmployeeDaoTest {
     @Test
     void findAll() {
 
-        var employeeEntity = buildEmployeeEntity();
+        EmployeeEntity employeeEntity = buildEmployeeEntity();
 
         Mockito.when(employeeRepository.findAll())
                 .thenReturn(Collections.singletonList(employeeEntity));
 
-        var employees = employeeDao.findAll();
+        List<Employee> employees = employeeDao.findAll();
 
 //        assertEquals(employeeEntity.getId(), employees.get(0).getIdEmployee());
         assertEquals(employeeEntity.getFirstName(), employees.get(0).getFirstName());
@@ -54,7 +57,7 @@ class EmployeeDaoTest {
     @Test
     void deleteAll() {
 
-        var employee = buildEmployeeEntity();
+        EmployeeEntity employee = buildEmployeeEntity();
 
         employeeRepository.deleteAll();
 
@@ -79,12 +82,12 @@ class EmployeeDaoTest {
     @Test
     void findById() {
 
-        var employeeEntity = buildEmployeeEntity();
+        EmployeeEntity employeeEntity = buildEmployeeEntity();
 
         Mockito.when(employeeRepository.findById(Mockito.anyInt()))
                 .thenReturn(Optional.of(employeeEntity));
 
-        var employeeDomain = employeeDao.findById(1);
+        Employee employeeDomain = employeeDao.findById(1);
 //        assertEquals(employeeEntity.getIdEmployee(), employeeDomain.getIdEmployee());
         assertEquals(employeeEntity.getFirstName(), employeeDomain.getFirstName());
 //        assertEquals(employee.getLastName(), employees.get(0).getLastName());
@@ -108,12 +111,12 @@ class EmployeeDaoTest {
     @Test
     void save() {
 
-        var employeeEntity = TestUtil.buildEmployeeEntity();
+        EmployeeEntity employeeEntity = TestUtil.buildEmployeeEntity();
 
         Mockito.when(employeeRepository.save(Mockito.any()))
                 .thenReturn(employeeEntity);
 
-        var employee = TestUtil.buildEmployee();
+        Employee employee = TestUtil.buildEmployee();
         employeeDao.save(employee);
 
         //        assertEquals(employeeEntity.getIdEmployee(), employeeDomain.getIdEmployee());

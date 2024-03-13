@@ -7,8 +7,14 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.when;
 
+import com.pe.relari.employee.model.api.AddressResponse;
+import com.pe.relari.employee.model.api.EmployeeDetailResponse;
+import com.pe.relari.employee.model.api.EmployeeRequest;
+import com.pe.relari.employee.model.api.EmployeeResponse;
+import com.pe.relari.employee.model.domain.Employee;
 import com.pe.relari.employee.service.EmployeeService;
 import java.util.Collections;
+import java.util.List;
 
 import com.pe.relari.employee.util.TestUtil;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,12 +39,12 @@ class EmployeeControllerTest {
     @Test
     void findAll() {
 
-        var employee = buildEmployee();
+        Employee employee = buildEmployee();
 
         when(service.findAll())
                 .thenReturn(Collections.singletonList(employee));
 
-        var employeeResponses = controller.findAll();
+        List<EmployeeResponse> employeeResponses = controller.findAll();
 
         assertEquals(employee.getIdEmployee(), employeeResponses.get(0).getId());
         assertEquals(employee.getFirstName(), employeeResponses.get(0).getFirstName());
@@ -50,12 +56,12 @@ class EmployeeControllerTest {
     @Test
     void findAll2() {
 
-        var employee = buildEmployee();
+        Employee employee = buildEmployee();
 
         when(service.findAll())
                 .thenReturn(Collections.singletonList(employee));
 
-        var employeeDetailResponse = controller.findAll2();
+        EmployeeDetailResponse employeeDetailResponse = controller.findAll2();
 
         assertNotNull(employeeDetailResponse);
     }
@@ -65,12 +71,12 @@ class EmployeeControllerTest {
     @Test
     void findById() {
 
-        var employee = buildEmployee();
+        Employee employee = buildEmployee();
 
         when(service.findById(anyInt()))
                 .thenReturn(employee);
 
-        var employeeResponse = controller.findById(1);
+        EmployeeResponse employeeResponse = controller.findById(1);
 
         assertEquals(employee.getIdEmployee(), employeeResponse.getId());
         assertEquals(employee.getFirstName(), employeeResponse.getFirstName());
@@ -82,12 +88,12 @@ class EmployeeControllerTest {
     @Test
     void getAddressById() {
 
-        var employee = buildEmployee();
+        Employee employee = buildEmployee();
 
         when(service.findById(anyInt()))
                 .thenReturn(employee);
 
-        var address = controller.getAddressById(1);
+        AddressResponse address = controller.getAddressById(1);
 
         assertEquals(employee.getAddress().getEmail(), address.getEmail());
         assertEquals(employee.getAddress().getPhoneNumber(), address.getPhoneNumber());
@@ -99,7 +105,7 @@ class EmployeeControllerTest {
 
         service.save(any());
 
-        var employeeRequest = TestUtil.buildEmployeeRequest();
+        EmployeeRequest employeeRequest = TestUtil.buildEmployeeRequest();
 
         controller.save(employeeRequest);
 
